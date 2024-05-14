@@ -1,7 +1,7 @@
 networks:
   default:
     external: true
-      name: roboshop
+    name: roboshop
 volumes:
   mongodb: #docker volume create mongodb
   redis:
