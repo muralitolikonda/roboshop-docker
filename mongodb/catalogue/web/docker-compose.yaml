@@ -38,9 +38,6 @@ services:
     - user
     
 
-  redis:
-    
-
   user:
     image: user:v1
     container_name: user
