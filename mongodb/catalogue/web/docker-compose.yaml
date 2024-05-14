@@ -1,7 +1,7 @@
 networks:
   default:
-    external:
-      name: roboshop
+    external: true
+    name: roboshop
 volumes:
   mongodb: #docker volume create mongodb
   redis:
@@ -34,7 +34,30 @@ services:
     - "80:80"
     depends_on:
     - catalogue
-  
+    - cart
+    - user
+    
+
   redis:
+    image: redis:v1
+    container_name: redis
+    volumes:
+    - source: redis
+      target: /data
+      type: volume
+
+  user:
+    image: user:v1
+    container_name: user
+    depends_on:
+    - redis
+    - mongodb
+
+  cart:
+    image: cart:v1
+    container_name: cart
+    depends_on:
+    - redis
+    - catalogue
 
   
