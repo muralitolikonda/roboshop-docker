@@ -1,12 +1,10 @@
 networks:
   default:
-    external: 
-     name: roboshop
+    external: true
+    name: roboshop
 volumes:
   mongodb: #docker volume create mongodb
-  redis:
-  mysql:
-  rabbitmq:
+ 
 services:
   # docker run -d --name mongodb --network=roboshop mongodb:1
   mongodb:
@@ -38,6 +36,7 @@ services:
     - user
     
   redis:
+    image: redis
 
   user:
     image: user:v1
